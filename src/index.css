@@ -1,0 +1,137 @@
+/* BODY
+font-family: 'Poppins', sans-serif;
+font-weight: 600; /* Semi-bold */
+
+/* HEADINGS font-family: 'Roboto', sans-serif;
+font-weight: 400; /* Regular */ 
+/* QUOTES font-family: 'Lora', serif;
+font-style: italic;
+ */
+/* === GOOGLE FONTS IMPORT === */
+/* Make sure you imported these in index.html or App.js */
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Poppins:wght@400;600;700&family=Roboto:wght@400;500;700&display=swap');
+
+/* === BODY STYLES === */
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif; /* Body text */
+  background-color: #ffffff;
+  color: #333;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* === HEADINGS / NAVBAR BRAND === */
+h1, h2, h3, h4, h5, h6, .navbar-brand {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600; /* Semi-bold */
+}
+
+/* === QUOTES / TESTIMONIALS === */
+.testimonial, blockquote {
+  font-family: 'Lora', serif;
+  font-style: italic;
+}
+
+/* === TEXT COLORS === */
+.text-primary {
+  color: #0056b3 !important; /* Blue if needed */
+}
+
+.text-danger {
+  color: #231816 !important; /* Dark brown for headings, etc. */
+}
+
+/* === BUTTONS === */
+button, .btn {
+  background-color: #231816; /* Dark brown */
+  color: #ffffff; /* White text */
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+button:hover, .btn:hover {
+  background-color: #3a1f18; /* Slightly lighter/darker on hover */
+  border-bottom: #ffffff;
+}
+
+
+
+/* === NAV LINKS === */
+.navbar-nav .nav-link {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  color: #231816; /* Dark brown nav links */
+}
+
+.navbar-nav .nav-link.active {
+  color: #231816;
+  font-weight: 700;
+}
+
+/* Brown buttons */
+/* === BUTTONS === */
+button, .btn, .btn-brown {
+  background-color: #231816 !important; /* Dark brown */
+  color: #ffffff !important; /* White or ivory text */
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  border: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Hover effect */
+button:hover, .btn:hover, .btn-brown:hover {
+  background-color: #3a1f18; /* Slightly darker brown */
+  color: #ffffff; /* Ensure text stays white */
+  border: none;
+}
+
+
+/* navigation links style */
+/* Navigation links hover underline */
+.navbar-nav .nav-link {
+  position: relative;
+  color: #231816; /* Dark brown */
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  text-decoration: none; /* Remove default underline */
+  transition: all 0.3s ease;
+}
+
+.navbar-nav .nav-link::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #f0cd52; /* Underline color */
+  transition: width 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover::after,
+.navbar-nav .nav-link.active::after {
+  width: 100%;
+}
+
+
+/* navbar-brand styles */
+
+/* Only the brand text hover effect */
+.navbar-brand span.brand-text {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  display: inline-block;
+  color: #231816; /* Dark brown */
+}
+
+.navbar-brand span.brand-text:hover {
+  transform: scale(1.05); /* Slight zoom */
+  opacity: 0.85;           /* Subtle fade */
+  cursor: pointer;
+}
+
+
+

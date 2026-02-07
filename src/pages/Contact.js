@@ -9,28 +9,49 @@ function Contact() {
     message: "",
   });
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Later: connect to backend/email service (e.g., EmailJS or Node mailer)
-    setSubmitted(true);
+    setLoading(true);
+
+    try {
+      const response = await fetch("http://localhost:5000/send-contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setSubmitted(true);
+        // Clear form after success
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        alert("Something went wrong. Please try again later.");
+      }
+    } catch (error) {
+      console.error("Connection error:", error);
+      alert("Could not connect to the server.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <Container className="my-5 main-content" style={{ maxWidth: "600px" }}>
-      <h2 className="fw-bold text-center mb-3">Contact Us</h2>
+      <h2 className="fw-bold text-center mb-3" style={{ color: "#231816" }}>Contact Us</h2>
       <p className="text-center text-muted mb-4">
         Have questions or want to book directly? Send us a message or reach us through our socials below.
       </p>
 
       {submitted && (
         <Alert variant="success" className="text-center">
-          ✅ Thank you, {formData.name}! Your message has been sent successfully.
+          Thank you! Your message has been sent successfully.
         </Alert>
       )}
 
@@ -44,6 +65,7 @@ function Contact() {
             value={formData.name}
             onChange={handleChange}
             required
+            disabled={loading}
           />
         </Form.Group>
 
@@ -56,6 +78,7 @@ function Contact() {
             value={formData.email}
             onChange={handleChange}
             required
+            disabled={loading}
           />
         </Form.Group>
 
@@ -69,41 +92,26 @@ function Contact() {
             value={formData.message}
             onChange={handleChange}
             required
+            disabled={loading}
           />
         </Form.Group>
 
-        <Button type="submit" className="w-100 btn-brown">
-          Send Message
+        <Button 
+          type="submit" 
+          className="w-100" 
+          disabled={loading}
+          style={{ backgroundColor: loading ? "#6c757d" : "#231816", border: "none", padding: "12px", fontWeight: "600" }}
+        >
+          {loading ? "Sending..." : "Send Message"}
         </Button>
       </Form>
 
       <div className="text-center mt-4">
         <h5 className="mb-3">Connect with us</h5>
         <div className="d-flex justify-content-center gap-4">
-          <a
-            href="https://www.instagram.com/japanquest"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-danger fs-4"
-          >
-            <FaInstagram />
-          </a>
-          <a
-            href="https://wa.me/1234567890"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-success fs-4"
-          >
-            <FaWhatsapp />
-          </a>
-          <a
-            href="https://www.facebook.com/japanquest"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-primary fs-4"
-          >
-            <FaFacebook />
-          </a>
+          <a href="https://www.instagram.com/japanquest" target="_blank" rel="noopener noreferrer" className="text-danger fs-4"><FaInstagram /></a>
+          <a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer" className="text-success fs-4"><FaWhatsapp /></a>
+          <a href="https://www.facebook.com/japanquest" target="_blank" rel="noopener noreferrer" className="text-primary fs-4"><FaFacebook /></a>
         </div>
       </div>
     </Container>

@@ -21,7 +21,7 @@ function NavbarComponent() {
   <span className="brand-text">Japan Quest</span>
 </Navbar.Brand>
 
-        <Navbar.Toggle aria-controls="nav" />
+        <Navbar.Toggle aria-controls="nav" className="custom-hamburger" />
         <Navbar.Collapse id="nav">
           <Nav className="ms-auto align-items-center">
             <Nav.Link

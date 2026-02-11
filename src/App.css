@@ -10,7 +10,24 @@
   }
 }
 
+/* The button container */
+.navbar-toggler.custom-hamburger {
+  background-color: #000000; /* Black background */
+  border: none;              /* Remove default border */
+  padding: 0.5rem;           /* Adjust padding for a nice look */
+  opacity: 1;                /* Ensure it's fully visible */
+}
 
+/* The three lines (hamburger icon) */
+.navbar-toggler.custom-hamburger .navbar-toggler-icon {
+  /* This filter turns the default dark lines into white */
+  filter: invert(100%) brightness(200%);
+}
+
+/* Optional: Handle the focus glow color */
+.navbar-toggler.custom-hamburger:focus {
+  box-shadow: 0 0 0 0.25rem rgba(0, 0, 0, 0.1);
+}
 
 .App {
   text-align: center;
